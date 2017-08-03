@@ -11,9 +11,14 @@ if __name__ == '__main__':
     GDriveJSON = 'auth.json'
     GSpreadSheet = 'blockchain'
 #    chain = blockchain.Blockchain()
-    x = input('Please input :')
+    scope = ['https://spreadsheets.google.com/feeds']
+    key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+    gc = gspread.authorize(key)
+    worksheet = gc.open(GSpreadSheet).sheet1
+    rows = worksheet.row_count
+    x = input('要加在區塊鍊中的文字 :')
     my_block = block.Block(x)
-    pre = input('Please input :')
+    pre = worksheet.cell(rows,4)
     my_block.update_previous_hash(pre)
     my_block.mine()
 #    chain.add_block(my_block)

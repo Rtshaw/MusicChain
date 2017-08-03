@@ -16,13 +16,14 @@ if __name__ == '__main__':
         key = SAC.from_json_keyfile_name(GDriveJSON, scope)
         gc = gspread.authorize(key)
         worksheet = gc.open(GSpreadSheet).sheet1
-        col = worksheet.col_values(1)
-	val = worksheet.acell('C')
+        rows = worksheet.row_count
+        col = worksheet.cell(rows,4)
+        #col = worksheet.cell(2,4)
     except Exception as ex:
         print('無法連線Google試算表', ex)
         sys.exit(1)
     print(col)
-    print(val)
+    print(rows)
 
 
 #https://docs.google.com/spreadsheets/d/15Zvx7cXS3X34vDu808KLcnOBBe3fM8EKBXM5UbXZ87Y/edit

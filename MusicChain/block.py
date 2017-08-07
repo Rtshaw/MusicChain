@@ -52,6 +52,5 @@ class Block(object):
     def previous_hashvalue(self):
         return self.previous_hash
 
-    def update_previous_hash(self,previous_hash):
+    def update_previous_hash(self, previous_hash):
         self.previous_hash = previous_hash
-

@@ -5,23 +5,23 @@ def findLastRow():
 
     t0 = time.time()
 
-#    print 'starting count 1'
+    #    print 'starting count 1'
     colvals = worksheet.col_values(1)
     t1 = time.time()
 
-#    print 'colvals: ', len(colvals)
+    #    print 'colvals: ', len(colvals)
 
-#    print 'count 1 took: ', str(t1 - t0) + ' seconds'
+    #    print 'count 1 took: ', str(t1 - t0) + ' seconds'
 
     # return len(colvals)
 
     t0 = time.time()
 
-#    print 'starting count 2'
+    #    print 'starting count 2'
 
     lastrow = datastartrow
 
-    while(True):
+    while (True):
         val = worksheet.cell(lastrow, datastartrow).value
 
         if val == '':
@@ -31,10 +31,10 @@ def findLastRow():
 
         lastrow += 1
 
- #   print 'lastrow: ', lastrow
+        #   print 'lastrow: ', lastrow
 
     t1 = time.time()
 
- #   print 'count 2 took: ', str(t1 - t0) + ' seconds'
+    #   print 'count 2 took: ', str(t1 - t0) + ' seconds'
 
     return lastrow

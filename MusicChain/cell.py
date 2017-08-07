@@ -1,5 +1,6 @@
 import gspread
 
+
 class Cell(gspread.Worksheet):
     def _cell_addr(self, row, col):
         return (row, col)

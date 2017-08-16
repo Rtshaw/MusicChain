@@ -7,9 +7,8 @@ import codecs
 import utils
 import base58
 
+"""
 b58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-
-
 def base58encode(n):
     result = ''
     while n > 0:
@@ -24,12 +23,13 @@ def base58CheckEncode(version, payload):
     print(binascii.b2a_hex(s_bytes))
     checksum = hashlib.sha256(hashlib.sha256(s_bytes).digest()).digest()[0:4]
     print(binascii.b2a_hex(checksum))
+"""
 
 
 def PrivateKeyToPublicKey(s):
-    sk = ecdsa.SigningKey.from_string(codecs.decode(s, 'hex'), curve=ecdsa.SECP256k1)
-    vk = sk.get_verifying_key()
-    return ('04' + vk.to_string().hex())
+    signkey = ecdsa.SigningKey.from_string(codecs.decode(s, 'hex'), curve=ecdsa.SECP256k1)
+    verifykey = signkey.get_verifying_key()
+    return('04' + verifykey.to_string().hex())
 
 
 """
@@ -44,13 +44,6 @@ def PublicToAddr(s):
 
 def keyToAddr(s):
     return PublicToAddr(PrivateToPublic(s))
-"""
-"""
-def PrivateToPublic(s):
-    signkey = ecdsa.SigningKey.from_string()
-    verifykey = signkey.get_verifying_key()
-    return ('\04' + signkey.get_verifying_key()
-    # return ('\04' + signkey.verifying_key.to_string()).encode('hex')
 """
 
 private_key = ''.join(['%x' % random.randrange(16) for x in range(0, 64)])

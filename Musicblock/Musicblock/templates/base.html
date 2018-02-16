@@ -1,10 +1,31 @@
+{% load bootstrap4 %}
+{% load fontawesome %}
+{% load  static %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Music block</title>
 </head>
+<style>
+    * {
+        font-family: 微軟正黑體, Verdana, Arial, Helvetica, sans-serif;
+    }
+    </style>
+
 <body>
+
+{% block navbar %}
+    {% include "_navbar.html" %}
+{% endblock %}
+<div id="container " class="container">
+    {% bootstrap_messages %}
+    {% block content %}
+    {% endblock %}
+</div>
 
 </body>
 </html>

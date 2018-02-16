@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myblock',
     'user',
+    'bootstrap4',
+    'fontawesome',
 ]
 
 MIDDLEWARE = [

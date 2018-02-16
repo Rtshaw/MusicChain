@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+from django.views import generic
+
+from .models import Music
+
+#音樂列表
+class MusicList(generic.ListView):
+    model = Music
+    template_name = "music_list.html"

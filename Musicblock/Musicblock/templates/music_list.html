@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+    <ul>
+
+        {% for movie in object_list %}
+            <li> {{ movie }} </li>
+        {% endfor %}
+    </ul>
+
+
+
+{% endblock %}

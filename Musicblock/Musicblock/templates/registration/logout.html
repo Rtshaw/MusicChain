@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+    <h3>已成功登出</h3>
+        {% bootstrap_button '重新登入' button_type='button' button_class='btn-primary' href={% url 'auth_login' %} %}<p><a href="">Login</a></p>
+  </div> </div>
+{% endblock %}

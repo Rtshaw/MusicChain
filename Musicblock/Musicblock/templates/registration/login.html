@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+    {% if next and not messages %}
+        {% if user.is_authenticated %}
+            {% bootstrap_alert '你的帳號沒有權限瀏覽此頁面，請嘗試登入其他帳號' alert_type='danger' %}
+        {% else %}
+            {% bootstrap_alert '登入以瀏覽此頁' alert_type='info' %}
+        {% endif %}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <form method="post" action="{% url 'login' %}?next={{ next }}">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% bootstrap_button "登入" button_type="submit" button_class="btn  btn-success btn-block " %}
+            </form>
+            <a href="{% url 'password_reset' %}">{% bootstrap_button "忘記密碼" button_type="link" button_class="btn btn-danger btn-block "  %}</a>
+        </div>
+    </div>
+{% endblock %}

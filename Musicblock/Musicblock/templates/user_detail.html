@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+    <ul>
+
+        {% for user in object %}
+            <li> 身分證:{{ user.ssn }} </li>
+            <li>身分證圖檔: {{ user.file }} </li>
+            <li> {{ user.gender }} </li>
+            <li> {{ user.prvateKey }} </li>
+            <li> {{ user.publicKey }} </li>
+            <li> {{ user.address }} </li>
+            <li> {{ user.token }} </li>
+        {% endfor %}
+    </ul>
+
+    上傳的音樂(尚未完成)
+
+    交易過的音樂(尚未完成)
+
+
+
+{% endblock %}

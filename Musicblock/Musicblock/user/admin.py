@@ -14,7 +14,7 @@ class UserProfileAdmin(UserAdmin):
 
     fieldsets = UserAdmin.fieldsets + (
         (None, {'fields': (
-        'ssn','file','private_key','wallet_address','token','gender'
+        'ssn','file','prvateKey','publicKey','address','token','gender'
         ,)}),
     )
 

@@ -2,10 +2,11 @@ from django.db import models
 from django.utils import timezone
 import uuid
 
-
+from user.models import UserProfile
 
 
 class Music(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name='上傳者', null=True)
     musicname = models.CharField(max_length=20, verbose_name='音樂名稱')
     singername = models.CharField(max_length=20, verbose_name='歌手名稱')
     body = models.TextField(blank=True, verbose_name='音樂說明')

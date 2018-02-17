@@ -1,23 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load bootstrap4 %}
-    <ul>
-
-        {% for user in object %}
-            <li> 身分證:{{ user.ssn }} </li>
-            <li>身分證圖檔: {{ user.file }} </li>
-            <li> {{ user.gender }} </li>
-            <li> {{ user.prvateKey }} </li>
-            <li> {{ user.publicKey }} </li>
-            <li> {{ user.address }} </li>
-            <li> {{ user.token }} </li>
-        {% endfor %}
-    </ul>
-
-    上傳的音樂(尚未完成)
-
-    交易過的音樂(尚未完成)
-
-
-
-{% endblock %}
+{% for user in object %}
+<br>
+<h3>個人資料</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">姓名</th>
+        <th scope="col">{{user.first_name}}</th>
+    </tr>
+    <tr>
+        <th scope="col">使用者名稱(帳號)</th>
+        <th scope="col">{{user.username}}</th>
+    </tr>
+    <tr>
+        <th scope="col">信箱</th>
+        <th scope="col">{{user.email}}</th>
+    </tr>
+    <tr>
+        <th scope="col">身分證字號</th>
+        <th scope="col">{{ user.ssn }}</th>
+    </tr>
+    <tr>
+        <th scope="col">身分證圖檔:</th>
+        <th scope="col">{{ user.file }}</th>
+    </tr>
+    <tr>
+        <th scope="col">性別</th>
+        <th scope="col">{{ user.gender }}</th>
+    </tr>
+    <tr>
+        <th scope="col">公鑰地址</th>
+        <th scope="col">{{ user.publicKey }}</th>
+    </tr>
+    <tr>
+        <th scope="col">錢包地址</th>
+        <th scope="col">{{ user.address }}</th>
+    </tr>
+    <tr>
+        <th scope="col">交易過的音樂</th>
+        <th scope="col">(尚未完成)</th>
+    </tr>
+    <tr>
+        <th scope="col">上傳過的音樂</th>
+        <th scope="col">(尚未完成)</th>
+    </tr>
+    </thead>
+    {% endfor %}
+    {% endblock %}

@@ -2,6 +2,13 @@
 {% load bootstrap4 %}
 {% block content %}
 
-    {% url 'login' as login_url %}
-    {% bootstrap_button '重新登入' button_type='button' button_class='btn-primary' href=login_url %}
+<br>
+<div class="row justify-content-md-center">
+
+        <p>已登出! 請重新登入</p>
+    </div>
+    <div class="row justify-content-md-center">
+        {% url 'login' as login_url %}
+        {% bootstrap_button '重新登入' button_type='button' button_class='btn-primary' href=login_url %}
+    </di
 {% endblock %}

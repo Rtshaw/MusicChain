@@ -1,13 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load bootstrap4 %}
-    <ul>
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
 
-        {% for movie in object_list %}
-            <li> {{ movie }} </li>
-        {% endfor %}
-    </ul>
-
-
-
+<br>
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">編號</th>
+        <th scope="col">音樂名稱</th>
+        <th scope="col">歌手</th>
+        <th scope="col">上傳時間</th>
+        <th scope="col">詳細內容</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for movie in object_list %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ movie }}</td>
+        <td>{{ movie.singername }}</td>
+        <td>{{ movie.update_time }}</td>
+        <td><i class="fa fa-search" aria-hidden="true"></i></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'music_create' %}">
+    <button type="button" class="btn btn-outline-primary">新增音樂</button>
+</a>
 {% endblock %}

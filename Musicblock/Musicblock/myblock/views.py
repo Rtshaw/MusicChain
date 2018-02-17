@@ -28,8 +28,8 @@ class MusicCreate(generic.CreateView):
         messages.success(self.request, '音樂已新增')
         return reverse('index')
 
-def homepage(request):
-    return render(request, 'homepage.html')
+# def homepage(request):
+#     return render(request, 'homepage.html')
 
 
 #新增交易(sender、recipient、amount)

@@ -87,14 +87,8 @@ class UserProfileUpdate(generic.UpdateView):
     model = UserProfile
     form_class = UserUpdateForm
     template_name = 'user_form.html'
+    success_url = '/'
 
 
     def get_object(self):
         return UserProfile.objects.filter(token = self.kwargs['token']).first()
-    # def get(self, request, *args, **kwargs):
-    #     # print(self.get_object().username)
-    #     if self.request.user.is_superuser or self.request.user.is_staff or self.request.user in self.get_object() :
-    #        return super().get(request, *args, **kwargs)
-    #     else:
-    #         messages.warning(self.request, '無此權限')
-    #         return HttpResponseRedirect(reverse('index'))

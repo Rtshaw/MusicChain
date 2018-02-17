@@ -16,13 +16,14 @@
     </tr>
     </thead>
     <tbody>
-    {% for movie in object_list %}
+    {% for music in object_list %}
     <tr>
         <th scope="row">{{ forloop.counter }}</th>
-        <td>{{ movie }}</td>
-        <td>{{ movie.singername }}</td>
-        <td>{{ movie.update_time }}</td>
-        <td><i class="fa fa-search" aria-hidden="true"></i></td>
+        <td>{{ music }}</td>
+        <td>{{ music.singername }}</td>
+        <td>{{ music.update_time }}</td>
+        <td> <a class="btn btn-default" href="{% url 'music_detail' token=music.token %}" label="查看音樂">
+                            <i class="fa fa-search" aria-hidden="true"></i></a></td>
     </tr>
     {% endfor %}
     </tbody>

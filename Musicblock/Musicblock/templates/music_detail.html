@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load bootstrap4 %}
+    {% load fontawesome %}
+    {% fontawesome_stylesheet %}
+
+
+    {% for music in object %}
+        <br>
+        <h3>音樂詳細內容</h3>
+        <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">音樂名稱</th>
+            <th scope="col">{{ music }}</th>
+        </tr>
+        <tr>
+            <th scope="col">歌手</th>
+            <th scope="col">{{ music.singername }}</th>
+        </tr>
+        <tr>
+            <th scope="col">上傳時間</th>
+            <th scope="col">{{ music.update_time }}</th>
+        </tr>
+        <tr>
+            <th scope="col">說明</th>
+            <th scope="col">{{ misic.body }}</th>
+        </tr>
+        <tr>
+            <th scope="col">音樂區塊連結</th>
+            <th scope="col">(尚未實作)</th>
+        </tr>
+        <a>購買按鈕</a>
+        </thead>
+    {% endfor %}
+{% endblock %}

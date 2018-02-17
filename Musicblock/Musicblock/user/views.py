@@ -18,7 +18,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views import generic
 
-from .forms import UserForm
+from .forms import UserForm, UserUpdateForm
 from .models import UserProfile
 
 
@@ -82,3 +82,19 @@ class SignUp(generic.CreateView):
         self.object.address = wallet_address
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
+
+class UserProfileUpdate(generic.UpdateView):
+    model = UserProfile
+    form_class = UserUpdateForm
+    template_name = 'user_form.html'
+
+
+    def get_object(self):
+        return UserProfile.objects.filter(token = self.kwargs['token']).first()
+    # def get(self, request, *args, **kwargs):
+    #     # print(self.get_object().username)
+    #     if self.request.user.is_superuser or self.request.user.is_staff or self.request.user in self.get_object() :
+    #        return super().get(request, *args, **kwargs)
+    #     else:
+    #         messages.warning(self.request, '無此權限')
+    #         return HttpResponseRedirect(reverse('index'))

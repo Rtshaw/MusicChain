@@ -45,6 +45,7 @@ class Musicblock(models.Model):
     previous_hash = models.CharField(max_length=20, verbose_name='創始區塊hash', default='1')
     self_hash = models.CharField(max_length=20, verbose_name='自己區塊hash',null=True,blank =True)
     musicblock_hash = models.UUIDField(db_index=True, default=uuid.uuid4, verbose_name='音樂區塊的編號(不重複的、會自動產生的)')
+    music_proof = models.CharField(max_length=20, verbose_name='工作量證明', default='100')
 
     class Meta:
         verbose_name = r'音樂區塊'   #別稱c
@@ -67,3 +68,4 @@ class Transactionblock(models.Model):
 
     def __str__(self):
         return self.transactionblock_hash
+

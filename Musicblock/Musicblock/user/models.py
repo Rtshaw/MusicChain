@@ -15,7 +15,9 @@ class UserProfile(AbstractUser):
     prvateKey = models.CharField(max_length=64, null=True, blank=True, verbose_name=u'私鑰',unique=True)
     publicKey = models.CharField(max_length=64, null=True, blank=True, verbose_name=u'公鑰',unique=True)
     address = models.CharField(max_length=58, null=True, blank=True, verbose_name=u'錢包',unique=True)
+    num = models.IntegerField( default=0, verbose_name=u'餘額',unique=True)
     token = models.UUIDField(db_index=True, default=uuid.uuid4)
+
     class Meta:
         verbose_name = r'使用者資訊'   #別稱c
         verbose_name_plural = verbose_name  #單數別稱

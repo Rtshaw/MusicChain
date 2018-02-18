@@ -11,13 +11,13 @@ import ecdsa
 import base58
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
 
 #個人詳細頁面
 from django.urls import reverse
 from django.views import generic
 
+from myblock.models import Music
 from .forms import UserForm, UserUpdateForm
 from .models import UserProfile
 
@@ -33,6 +33,11 @@ class UserProfileDetail(generic.DetailView):
     #     context['Answer_list'] = Answer.objects.filter(aquestion=question)
     #     return context
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(UserProfileDetail, self).get_context_data(*args, **kwargs)
+        user = get_object_or_404(UserProfile, token=self.kwargs['token'])
+        context['music_list'] = Music.objects.filter(user=user)
+        return context
     #取得使用者物件的方法
     def get_object(self):
         return self.model.objects.filter(token=self.kwargs['token'])

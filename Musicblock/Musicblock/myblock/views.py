@@ -12,6 +12,7 @@ from mp3hash import mp3hash, TaggedFile
 
 from Musicblock import settings
 from Musicblock.settings import MEDIA_URL, SITE_URL
+from user.models import UserProfile
 from .models import Music, Musicblock
 
 
@@ -53,6 +54,13 @@ class MusicCreate(generic.CreateView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.music.name = str(timezone.now().strftime("%Y%m%d%H%M")) + "." + str(self.object.music.name.split(".")[-1])
+
+        user = UserProfile.objects.filter(token=self.request.user.token).first()
+        user.num += 3
+        UserProfile.objects.filter(token=self.request.user.token).update(num=user.num)
+
+        print(user.num)
+
         self.object.save()
         # self.object.music.open(mode='rb')
         # content = self.object.music.read()
@@ -62,8 +70,9 @@ class MusicCreate(generic.CreateView):
         # music_hash = TaggedFile(content).hash(maxbytes=maxbytes, hasher=hasher)
         # print(music_hash)
         # self.object.music.close()
-        music_token = 00000
-        musicblock = Musicblock.objects.create(music_hash=music_hash,music_token=music_token)
+        # music_token = '235325262635235235324'
+        # music_hash = 0
+        # musicblock = Musicblock.objects.create(music_hash=music_hash,music_token=music_token)
 
         return HttpResponseRedirect(self.get_success_url())
 

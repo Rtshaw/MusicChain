@@ -40,7 +40,7 @@
     </tr>
     <tr>
         <th scope="col">目前餘額</th>
-        <th scope="col">(尚未完成)</th>
+        <th scope="col">{{ user.num }}</th>
     </tr>
     <tr>
         <th scope="col">交易過的音樂</th>
@@ -48,7 +48,7 @@
     </tr>
     <tr>
         <th scope="col">上傳過的音樂</th>
-        <th scope="col">(尚未完成)</th>
+        <th scope="col">{% for music in music_list %}{{ music }}<br>{% endfor %}</th>
     </tr>
     </thead>
     {% endfor %}

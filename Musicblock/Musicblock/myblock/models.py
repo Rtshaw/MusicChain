@@ -68,4 +68,3 @@ class Transactionblock(models.Model):
 
     def __str__(self):
         return self.transactionblock_hash
-

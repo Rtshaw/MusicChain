@@ -102,3 +102,10 @@ class MusicBuy(generic.DetailView):
 
     def get_object(self):
         return self.model.objects.filter(token=self.kwargs['token'])
+
+class MusicListen(generic.DetailView):
+    model = Music
+    template_name = "music_listen.html"
+
+    def get_object(self):
+        return self.model.objects.filter(token=self.kwargs['token'])

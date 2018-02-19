@@ -4,6 +4,9 @@
 {% for user in object %}
 <br>
 <h3>個人資料</h3>
+    <a href="{% url 'user_update' request.user.token %}">
+    <button type="button" class="btn btn-outline-danger">個人資料修改</button>
+</a>
 <table class="table">
     <thead>
     <tr>
@@ -24,16 +27,16 @@
     </tr>
     <tr>
         <th scope="col">身分證圖檔:</th>
-        <th scope="col">{{ user.file }}</th>
+        <th scope="col"><img height="120vh" src="{{ user.file.url }}" ></th>
     </tr>
     <tr>
         <th scope="col">性別</th>
         <th scope="col">{{ user.gender }}</th>
     </tr>
-    <tr>
-        <th scope="col">公鑰地址</th>
-        <th scope="col">{{ user.publicKey }}</th>
-    </tr>
+{#    <tr>#}
+{#        <th scope="col">公鑰地址</th>#}
+{#        <th scope="col">{{ user.publicKey }}</th>#}
+{#    </tr>#}
     <tr>
         <th scope="col">錢包地址</th>
         <th scope="col">{{ user.address }}</th>
@@ -44,11 +47,11 @@
     </tr>
     <tr>
         <th scope="col">交易過的音樂</th>
-        <th scope="col">(尚未完成)</th>
+        <th scope="col">目前無交易</th>
     </tr>
     <tr>
         <th scope="col">上傳過的音樂</th>
-        <th scope="col">{% for music in music_list %}{{ music }}<br>{% endfor %}</th>
+        <th scope="col">{% for music in music_list %}{{ music }}<br>{% empty %}目前無上傳音樂{% endfor %}</th>
     </tr>
     </thead>
     {% endfor %}

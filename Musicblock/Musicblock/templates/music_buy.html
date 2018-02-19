@@ -7,10 +7,7 @@
 
     {% for music in object %}
         <br>
-        <h3>音樂區塊內容</h3>
-        <a href="{% url 'music_buy' music.token %}">
-    <button type="button" class="btn btn-outline-dark">購買音樂</button>
-</a>
+        <h3> 購買資訊如下</h3>
         <table class="table">
         <thead>
         <tr>
@@ -34,14 +31,29 @@
             <th scope="col">1</th>
         </tr>
         <tr>
-            <th scope="col">生成人錢包地址</th>
+            <th scope="col">給予人錢包地址</th>
+            <th scope="col">UuDGZpe8QKy9fWePtZidWf4FZ9X33rqRPgZ1eMKXrd7SYrTsBJ9d </th>
+        </tr>
+        <tr>
+            <th scope="col">接收人錢包地址</th>
             <th scope="col">Ky9fWUuDGZpe8f4FZ9X33rqRPgQePtZiXrd7SYrTsBJ9ddWZ1eMK </th>
         </tr>
         <tr>
             <th scope="col">音樂雜湊值</th>
             <th scope="col">6611bc5b01a2fc6a6386a871e8c51f86e1f12b33</th>
         </tr>
+        <tr>
+            <th scope="col">交易金額</th>
+            <th scope="col">3 MusicCoin</th>
+        </tr>
 
         </thead>
+        <br>
+        <p>目前餘額：30 MusicCoin   <button type="button" class="btn btn-success"><i class="fa fa-check"></i>可購買</button></p>
     {% endfor %}
+
+
+
+
+
 {% endblock %}

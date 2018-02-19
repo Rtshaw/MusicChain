@@ -11,7 +11,7 @@ class Music(models.Model):
     singername = models.CharField(max_length=20, verbose_name='歌手名稱')
     body = models.TextField(blank=True, verbose_name='音樂說明')
     update_time = models.DateTimeField(default=timezone.now,verbose_name='上傳時間')
-    music = models.FileField(blank=False, upload_to='resources/music/%Y/%m/%d/', verbose_name='音樂上傳路徑')
+    music = models.FileField(blank=False, upload_to='resources/music/%Y/%m/%d/', verbose_name='上傳音樂')
     token = models.UUIDField(db_index=True, default=uuid.uuid4)
 
     class Meta:

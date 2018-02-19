@@ -58,9 +58,6 @@ class MusicCreate(generic.CreateView):
         user = UserProfile.objects.filter(token=self.request.user.token).first()
         user.num += 3
         UserProfile.objects.filter(token=self.request.user.token).update(num=user.num)
-
-        print(user.num)
-
         self.object.save()
         # self.object.music.open(mode='rb')
         # content = self.object.music.read()
@@ -95,6 +92,13 @@ class MusicCreate(generic.CreateView):
 class MusicDetail(generic.DetailView):
     model = Music
     template_name = "music_detail.html"
+
+    def get_object(self):
+        return self.model.objects.filter(token=self.kwargs['token'])
+
+class MusicBuy(generic.DetailView):
+    model = Music
+    template_name = "music_buy.html"
 
     def get_object(self):
         return self.model.objects.filter(token=self.kwargs['token'])
